@@ -1,0 +1,86 @@
+---
+title: "Supplement to Example Manuscript Template for a Data Analysis Project"
+subtitle: ""
+author: Sri Lakshmi Chundru, Collin Real, Joaquin Ramirez, Seth Harris
+format:
+  docx:
+    toc: false
+    number-sections: true
+    highlight-style: github
+# bibliography: ../../assets/dataanalysis-references.bib
+# csl: ../../assets/apa.csl
+---
+
+# Overview
+
+An overview of the correct process to generate the final outputs as well as some exploratory analysis.
+
+
+# Code Information
+
+**Run analysis in the following order.**
+
+1. Pre-Processing File (Quarto): <br/>
+/code/processing-code/pre_process_tax_data.qmd - preprocesses the tax/ev data and merges them into one dataset.
+
+2. Exploratory Data Analysis (Quarto): <br/>
+/code/eda-code/eda-ev-dataset.qmd - exploratory analysis of the electric vehicle dataset <br/>
+/code/eda-code/eda-ev-tax.qmd - exploratory analysis of the tax dataset <br/>
+
+3. Predictive models (Quarto): <br/>
+/code/analysis-code/statistical_analysis.qmd - builds multiple predictive models, visualizes, and compares them.
+
+# Additional Method Details
+
+#### Decision Tree Regressor:
+A basic model that splits the data into subsets based on feature values, creating a tree structure. We set hyperparameters such as the maximum depth and minimum samples per leaf to control the model's complexity and prevent overfitting.
+
+#### Random Forest Regressor:
+An ensemble learning method that constructs multiple decision trees and aggregates their outputs to improve prediction accuracy. We configured key parameters like the number of trees (n_estimators) and the maximum depth, optimizing for a balance between bias and variance.
+
+#### XGBoost Regressor:
+A gradient boosting model known for its efficiency and performance. XGBoost builds trees sequentially, with each new tree aiming to correct errors made by the previous ones. We fine-tuned parameters such as the learning rate (eta), maximum depth, and regularization terms (lambda and alpha) to enhance model performance.
+
+#### HistGradientBoosting Regressor:
+A histogram-based implementation of gradient boosting that is particularly efficient for large datasets. This model discretizes continuous features into bins, reducing memory usage and speeding up training. We set parameters including the number of iterations (max_iter), learning rate, and number of bins (max_bins) to optimize the model.
+
+# Additional results
+## Log-Transformed Histogram Examples
+![Individual Retirement Payments](../../../results/figures/histograms/Individual%20retirement%20arrangement%20payments%20amount_histogram.png)
+
+![Salary & Wages Amount](../../../results/figures/histograms/Salaries%20and%20wages%20amount_histogram.png)
+
+![Home Mortgage Interest Paid](../../../results/figures/histograms/home%20mortgage%20interest%20paid%20amount_histogram.png)
+
+## Log-Transformed Boxplot Examples
+![Individual Retirement Payments](../../../results/figures/boxplots/Individual%20retirement%20arrangement%20payments%20amount_boxplot.png)
+
+![Salary & Wages Amount](../../../results/figures/boxplots/Salaries%20and%20wages%20amount_boxplot.png)
+
+![Home Mortgage Interest Paid](../../../results/figures/boxplots/home%20mortgage%20interest%20paid%20amount_boxplot.png)
+
+## Model Comparison - MAE
+!['MAE'](../../../results/output/model_comparison/MAE.png)
+
+## Model Comparison - MSE
+!['MSE'](../../../results/output/model_comparison/MSE.png)
+
+## Model Comparison - R-squared
+!['R-squared'](../../../results/output/model_comparison/R-squared.png)
+
+## Model Comparison - RMSE
+!['RMSE'](../../../results/output/model_comparison/RMSE.png)
+
+## Variable Importance - Decision Tree
+!['Decision Tree Regressor'](../../../results/output/variable_importance/Decision%20Tree%20Regressor.png)
+
+## Variable Importance - Hist Gradient Boosting
+!['Hist Gradient Boosting'](../../../results/output/variable_importance/HistGradientBoostingRegressor%20(Permutation%20Importance).png)
+
+## Variable Importance - Random Forest
+!['Random Forest'](../../../results/output/variable_importance/Random%20Forest%20Regressor.png)
+
+# References
+- Jain, A. (n.d.). Electric vehicle population [Data set]. Kaggle. Retrieved June 6, 2024, from https://www.kaggle.com/datasets/jainaru/electric-vehicle-population <br/>
+
+- Internal Revenue Service. (n.d.). SOI tax stats - Individual income tax statistics - ZIP code data (SOI). Retrieved June 16, 2024, from https://www.irs.gov/statistics/soi-tax-stats-individual-income-tax-statistics-zip-code-data-soi
